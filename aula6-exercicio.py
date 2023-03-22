@@ -2,7 +2,7 @@ def divisor(quebra):
   return print("-------------------------------------------------------------"+quebra)
 
 divisor("")
-print("CONVIDADOS PARA UMA FESTA")
+print("CONVIDADOS PARA ALGUMA FESTA")
 divisor("\n")
 divisor("")
 nomes = input("Deseja convidar quem? ").split(",")
