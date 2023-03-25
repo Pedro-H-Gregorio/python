@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 # FUNÇÕES UTILIZADAS
 
 def divisor(quebra):
@@ -19,20 +21,6 @@ def multiplicacaoEscalar(matriz1, escalar):
     matrizNova.append(listaNova)
   return matrizNova
 
-def retornaElementosMatriz(matriz, linha, coluna):
-  contadorLinha = 0
-  contadorColuna = 0
-
-  for i in matriz:
-    if contadorLinha == linha:
-      for j in i:
-        if contadorColuna == coluna:
-          return j
-        else:
-          contadorColuna += 1
-    else:
-      contadorLinha += 1
-
 def operacacaoComMatriz(matriz1, matriz2, operacao):
   matrizNova = []
   contadorColuna = 0
@@ -44,23 +32,17 @@ def operacacaoComMatriz(matriz1, matriz2, operacao):
     for j in i:
       match operacao:
         case "*":
-          elementoMatriz2 = retornaElementosMatriz(matriz2, contadorColuna, contadorLinha)
-          listaNova.append(j * elementoMatriz2)
+          listaNova.append(j * matriz2[contadorColuna][contadorLinha])
         case "+":
-          elementoMatriz2 = retornaElementosMatriz(matriz2, contadorLinha, contadorColuna)
-          listaNova.append(j + elementoMatriz2)
+          listaNova.append(j + matriz2[contadorLinha][contadorColuna])
         case "-":
-          elementoMatriz2 = retornaElementosMatriz(matriz2, contadorLinha, contadorColuna)
-          listaNova.append(j - elementoMatriz2)
+          listaNova.append(j - matriz2[contadorLinha][contadorColuna])
         case "and":
-          elementoMatriz2 = retornaElementosMatriz(matriz2, contadorLinha, contadorColuna)
-          listaNova.append(min([j,elementoMatriz2]))
+          listaNova.append(min([j,matriz2[contadorLinha][contadorColuna]]))
         case "or":
-          elementoMatriz2 = retornaElementosMatriz(matriz2, contadorLinha, contadorColuna)
-          listaNova.append(max([j,elementoMatriz2]))
+          listaNova.append(max([j,matriz2[contadorLinha][contadorColuna]]))
         case "*and":
-          elementoMatriz2 = retornaElementosMatriz(matriz2, contadorColuna, contadorLinha)
-          listaNova.append(min([j,elementoMatriz2]))
+          listaNova.append(min([j,matriz2[contadorColuna][contadorLinha]]))
 
       contadorColuna += 1
     
@@ -75,9 +57,7 @@ def operacaoGeral(operacao1, matriz1, escalar1, matriz2):
     return multiplicacaoEscalar(matriz1, escalar1)
   else: 
     return operacacaoComMatriz(matriz1, matriz2, operacao1)
-
-      
-
+     
 # EXECUÇÃO DO CÓDIGO
             
 divisor("")
@@ -95,17 +75,18 @@ while controle[0]:
   ordem = input("Qual a ordem da "+str(len(matrizes)+1)+"° matriz que deseja inserir? ").split("x")
   matriz = []
 
-  for i in range(int(ordem.pop(-1))):
+  for i in range(int(ordem.pop(0))):
     linha = input("Qual a "+str(i+1)+"° linha? ").split(" ")
     mapLista = list(map(lambda el: int(el),linha))
     matriz.append(mapLista)
   matrizes.append(matriz)
 
-  escalarConfirmar = input("Deseja adicionar um número escalar? (S/N) ")
-  controle[1] = confirmacao(escalarConfirmar)
-
   confirmar = input("Deseja fazer adiconar mais uma matriz ? (S/N) ")
   controle[0] = confirmacao(confirmar)
+
+  if controle[0] == False:
+    escalarConfirmar = input("Deseja adicionar um número escalar? (S/N) ")
+    controle[1] = confirmacao(escalarConfirmar)
 
   if controle[1]: 
     valorEscalar = float(input("Qual o valor? "))
@@ -116,7 +97,9 @@ while controle[0]:
   if controle[0] and controle[1]:
     operacao.append("*")
     operacao.append(input("Qual operação quer fazer ? (+|-|*|and|or|*and) "))
-  elif controle[0] and not controle[1]:
+  elif not controle[0] and controle[1]:
+    operacao.append("*")
+  elif controle[0] and not controle[1]: 
     operacao.append(input("Qual operação quer fazer ? (+|-|*|and|or|*and) "))
 
 
