@@ -21,6 +21,24 @@ def multiplicacaoEscalar(matriz1, escalar):
     matrizNova.append(listaNova)
   return matrizNova
 
+def multiplicacaoMatrizes(matriz1, matriz2):
+  matrizNova = []
+
+  for i in range(len(matriz1)):
+    listaNova = []
+    for j in range(len(matriz2[i])):
+      resultado = 0
+      
+      for i2 in range(len(matriz2)):
+        resultado += matriz1[i][i2] * matriz2[i2][j]
+      
+      listaNova.append(resultado)
+    
+    matrizNova.append(listaNova)
+
+  return matrizNova
+      
+
 def operacacaoComMatriz(matriz1, matriz2, operacao):
   matrizNova = []
   contadorColuna = 0
@@ -31,8 +49,6 @@ def operacacaoComMatriz(matriz1, matriz2, operacao):
     
     for j in i:
       match operacao:
-        case "*":
-          listaNova.append(j * matriz2[contadorColuna][contadorLinha])
         case "+":
           listaNova.append(j + matriz2[contadorLinha][contadorColuna])
         case "-":
@@ -55,6 +71,8 @@ def operacacaoComMatriz(matriz1, matriz2, operacao):
 def operacaoGeral(operacao1, matriz1, escalar1, matriz2):
   if escalar1 != "":
     return multiplicacaoEscalar(matriz1, escalar1)
+  elif operacao1 == "*":
+    return multiplicacaoMatrizes(matriz1, matriz2)
   else: 
     return operacacaoComMatriz(matriz1, matriz2, operacao1)
      
@@ -84,9 +102,9 @@ while controle[0]:
   confirmar = input("Deseja fazer adiconar mais uma matriz ? (S/N) ")
   controle[0] = confirmacao(confirmar)
 
-  if controle[0] == False:
-    escalarConfirmar = input("Deseja adicionar um número escalar? (S/N) ")
-    controle[1] = confirmacao(escalarConfirmar)
+  
+  escalarConfirmar = input("Deseja adicionar um número escalar? (S/N) ")
+  controle[1] = confirmacao(escalarConfirmar)
 
   if controle[1]: 
     valorEscalar = float(input("Qual o valor? "))
