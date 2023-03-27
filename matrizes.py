@@ -25,16 +25,17 @@ def multiplicacaoMatrizes(matriz1, matriz2):
   matrizNova = []
 
   for i in range(len(matriz1)):
-    listaNova = []
-    for j in range(len(matriz2[i])):
+    linhaNova = []
+    
+    for j in range(len(matriz2[0])):
       resultado = 0
       
-      for i2 in range(len(matriz2)):
-        resultado += matriz1[i][i2] * matriz2[i2][j]
+      for k in range(len(matriz2)):
+        resultado += matriz1[i][k] * matriz2[k][j]
       
-      listaNova.append(resultado)
+      linhaNova.append(resultado)
     
-    matrizNova.append(listaNova)
+    matrizNova.append(linhaNova)
 
   return matrizNova
       
