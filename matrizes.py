@@ -77,7 +77,7 @@ while controle[0]:
 
   for i in range(int(ordem.pop(0))):
     linha = input("Qual a "+str(i+1)+"° linha? ").split(" ")
-    mapLista = list(map(lambda el: int(el),linha))
+    mapLista = list(map(int,linha))
     matriz.append(mapLista)
   matrizes.append(matriz)
 
