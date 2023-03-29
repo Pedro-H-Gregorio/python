@@ -1,5 +1,6 @@
 import re
-from functools import reduce
+import os
+from os import makedirs
 
 encontrouTBody = False
 
@@ -21,6 +22,14 @@ for linha in arquivo:
             texto += re.sub(r'<.+?>',"",linha.strip()) + " "
     
 texto = re.findall(r'[a-zA-Z].\s\w*\s\d{1,2}|\w*\s\d{1,2}',texto)
+
+#Fazendo pasta para criar os arquivos dos pilotos
+
+pasta = '../projetoF1'
+[diretorio] = os.walk(pasta)
+path = (os.path.realpath(diretorio[0]))
+makedirs(f'{path}/2022')
+
 
 for i in texto:
     lista = i.split(" ")
