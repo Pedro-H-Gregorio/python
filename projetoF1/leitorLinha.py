@@ -1,18 +1,13 @@
-""" with open("race-result.html", "r+", encoding="utf-8") as file:
-    arquivo = file.readlines()
-
-for i in arquivo:
-    print(arquivo) """
-
 import re
-
-regex = re.compile("span")
+from functools import reduce
 
 encontrouTBody = False
 
 arquivo = open('race-result.html', 'r', encoding="utf-8")
-for linha in arquivo:
+texto = ""
 
+for linha in arquivo:
+    
     #Encontrar tbody
     if not encontrouTBody and linha.find("tbody") != -1:
         encontrouTBody = True
@@ -23,9 +18,16 @@ for linha in arquivo:
         
         #Encontrar nomes e pontos
         if linha.find('class="hide-for-mobile"') != -1 or linha.find('class="bold"') != -1:
-            print(regex.sub(linha.strip(),""))
-            
-            
+            texto += re.sub(r'<.+?>',"",linha.strip()) + " "
     
-    
+texto = re.findall(r'[a-zA-Z].\s\w*\s\d{1,2}|\w*\s\d{1,2}',texto)
+
+for i in texto:
+    lista = i.split(" ")
+    if len(lista) == 3:
+        lista = [lista[0]+" "+lista[1],lista[2]]
+    novoArquivo = open(f'{lista[0]}.txt','a') 
+    novoArquivo.write(f'Ponto: {lista[1]}')
+    novoArquivo.close()
+
 arquivo.close()

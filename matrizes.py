@@ -142,4 +142,5 @@ for i in range(len(operacao)):
 
 divisor("")
 resultadoFinal = resultados.pop()
-print(resultadoFinal)
+for i in resultadoFinal:
+  print(i)
