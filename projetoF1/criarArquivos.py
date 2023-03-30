@@ -29,7 +29,7 @@ def criarArquivo(nomeGP, ano):
         #Fazendo pasta para criar os arquivos dos pilotos
         makedirs(f'./pontuacaoGP{ano}')
     except:
-        print("Já existe uma pasta para inserir os dados")
+        print("Inserindo ...")
     finally:
         #Contruindo arquivos e repassando para pasta
         for i in texto:
