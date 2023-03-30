@@ -1,5 +1,4 @@
 import re
-import os
 from os import makedirs
 
 def criarArquivo(nomeGP, ano):
