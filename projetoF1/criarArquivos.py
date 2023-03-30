@@ -2,7 +2,9 @@ import re
 import os
 from os import makedirs
 
-def criarArquivo(arquivo, ano):
+def criarArquivo(nomeGP, ano):
+
+    arquivo = open(f'./html/{nomeGP}.html','r')
 
     encontrouTBody = False
     texto = ""
@@ -22,15 +24,10 @@ def criarArquivo(arquivo, ano):
                 texto += re.sub(r'<.+?>',"",linha.strip()) + " "
         
     texto = re.findall(r'[a-zA-Z].\s\w*\s\d{1,2}|\w*\s\d{1,2}',texto)
-    print(texto)
 
     try :        
         #Fazendo pasta para criar os arquivos dos pilotos
-
-        pasta = '../projetoF1'
-        [diretorio] = os.walk(pasta)
-        path = (os.path.realpath(diretorio[0]))
-        makedirs(f'{path}/{ano}')
+        makedirs(f'./pontuacaoGP{ano}')
     except:
         print("Já existe uma pasta para inserir os dados")
     finally:
@@ -39,6 +36,6 @@ def criarArquivo(arquivo, ano):
             lista = i.split(" ")
             if len(lista) == 3:
                 lista = [lista[0]+" "+lista[1],lista[2]]
-            novoArquivo = open(f'./{ano}/{lista[0]}.txt','a') 
+            novoArquivo = open(f'./pontuacaoGP{ano}/{lista[0]}.txt','a') 
             novoArquivo.write(f'Ponto: {lista[1]}\n')
             novoArquivo.close()
