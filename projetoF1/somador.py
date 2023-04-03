@@ -17,8 +17,9 @@ for path in os.listdir(diretorio):
     arquivo.close()
     os.remove(diretorio+path)
     novoArquivo = open(diretorio+path, "a")
+    novoArquivo.write('0')
 
     for linhas in valores:
-        novoArquivo.write(f'{linhas}\n')
+        novoArquivo.write(f'\n{linhas}')
     
     novoArquivo.close()
