@@ -35,6 +35,6 @@ def criarArquivo(nomeGP, ano):
             lista = i.split(" ")
             if len(lista) == 3:
                 lista = [lista[0]+" "+lista[1],lista[2]]
-            novoArquivo = open(f'./pontuacaoGP{ano}/{lista[0]}.txt','a') 
-            novoArquivo.write(f'Ponto: {lista[1]}\n')
+            novoArquivo = open(f'./pontuacaoGP{ano}/{lista[0]}.dat','a') 
+            novoArquivo.write(f'{lista[1]}\n')
             novoArquivo.close()
