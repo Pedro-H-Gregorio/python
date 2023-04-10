@@ -3,8 +3,6 @@ hi, mi, hf, mf = map(int,input().split())
 ht = hf - hi
 mt = mf - mi
 
-
-
 if mi > mf or mt < 0:
     mt += 60
     ht -= 1
