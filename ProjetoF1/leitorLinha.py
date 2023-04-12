@@ -30,7 +30,4 @@ def leitorLinha(ano):
                 criarArquivo(nomeArquivo[1],ano)
 
     html.close()
-
-        
-
-        
+  
