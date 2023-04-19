@@ -1,16 +1,18 @@
-import re
 while True:
     try :
-        text = input()
+        text = input().upper()
         fraseNova = ""
+        eh_maiuscula = True
         for i in text:
-            try:
-                ultima_letra = re.search(r'\w\s*$', fraseNova).group()
-                if ultima_letra.strip() == ultima_letra.strip().upper():
+            if i != " ":
+                if eh_maiuscula:
+                    fraseNova += i
+                    eh_maiuscula = False
+                else:
                     fraseNova += i.lower()
-                else: fraseNova += i.upper()
-            except:
-                fraseNova += i.upper()
+                    eh_maiuscula = True
+            else:
+                fraseNova += i
 
         print(fraseNova)
     except EOFError:
