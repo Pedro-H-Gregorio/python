@@ -1,16 +1,16 @@
 import re
 controle = True
-
+saida = []
 while controle:
     try:
-        replace = 'aBc'
-        substituinte = '923'
-        text = '<dont replacethis>abcabc<abcabcde>'
-        regex_replace = rf'(?i)<([^>]*?)({replace})+(.*?)>'
+        replace, substituinte, text = map(input,["","",""])
+
+        regex_replace = rf'(?i)<([^>]*?)({replace})(.*?)>'
         regex_sub = r'<\1$$$$$$$$$$$$$$$$\3>'
-        old_text = ''
-        while re.match(regex_replace,text):
+
+        while re.search(regex_replace,text) != None:
             text = re.sub(regex_replace,regex_sub,text,1).replace('$$$$$$$$$$$$$$$$',substituinte)
-        print(text)
+        saida.append(text)
     except EOFError:
         break
+print("\n".join(saida))
