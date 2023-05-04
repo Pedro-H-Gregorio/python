@@ -1,8 +1,16 @@
 import re
-text = input()
-regex_replace = r'<([^>]*?)(abc)+(.*?)>'
-regex_sub = r'<\1ZZZ\3>'
+controle = True
 
-print(re.match(regex_replace,text))
-
-print(re.sub(r'<([^>]*?)(abc)+(.*?)>',r'<\1ZZZ\3>',text))
+while controle:
+    try:
+        replace = 'aBc'
+        substituinte = '923'
+        text = '<dont replacethis>abcabc<abcabcde>'
+        regex_replace = rf'(?i)<([^>]*?)({replace})+(.*?)>'
+        regex_sub = r'<\1$$$$$$$$$$$$$$$$\3>'
+        old_text = ''
+        while re.match(regex_replace,text):
+            text = re.sub(regex_replace,regex_sub,text,1).replace('$$$$$$$$$$$$$$$$',substituinte)
+        print(text)
+    except EOFError:
+        break
