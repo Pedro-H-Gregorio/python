@@ -1,0 +1,16 @@
+animal = 'Dinossauro'
+
+match animal:
+
+  case 'Vaca' | 'Girafa' | 'Cachorro' | 'Porco':
+    print('Esse animal irá para Arca de Noé')    
+  case _:
+    print('Esse animal não vai.')
+
+## Explicação
+
+  Esse programa serve para verificar se o animal vai embarcar na arca de Noé ou não. 
+  Caso o anima seja a vaca, girafa, cachorro ou porco ele irá entrar na arca. Qualquer animal que não pertença a esse
+grupo, não irá embarcar. 
+  Neste caso, o animal em questão é o Dinossauro, logo o programa vai dizer que ele não vai para a arca, pois não faz
+parte do grupo citado acima
