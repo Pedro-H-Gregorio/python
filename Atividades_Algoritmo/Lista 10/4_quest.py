@@ -1,6 +1,6 @@
 string1 = input()
 string2 = input()
-string1, string2 = sorted([string1,string2],reverse=True)
+string1, string2 = sorted([string1,string2])
 substring = ""
 controle = 0
 
@@ -13,4 +13,4 @@ for i in range(len(string1)):
     controle=i+1
 
     
-print(substring)
+print(len(substring))
