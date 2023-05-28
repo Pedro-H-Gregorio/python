@@ -1,9 +1,7 @@
 def fibonnati(quantidade):
     sequencia = [1,1]
-    if quantidade<=2:
-       return sequencia[quantidade-1]
-    else:
-       for i in range(1,quantidade-1):
+    
+    for i in range(1,quantidade-1):
           sequencia.append(sequencia[-1]+sequencia[-2])
     return sequencia[quantidade-1]
 

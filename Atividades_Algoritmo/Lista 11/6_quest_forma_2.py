@@ -9,3 +9,8 @@ while True:
     if n<0:
       break
     print(fibonnati(n))
+
+'''
+Essa é uma boa forma para se entender um pouco a mais de recursividade, entretanto para um numero alto de 
+posição, não 
+'''
