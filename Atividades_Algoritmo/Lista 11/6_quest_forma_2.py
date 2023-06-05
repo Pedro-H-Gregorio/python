@@ -1,8 +1,7 @@
 def fibonnati(quantidade):
-    if quantidade < 2:
-      return quantidade
-    else:
-      return fibonnati(quantidade - 1) + fibonnati(quantidade -2)
+    if quantidade in [1,2]:
+      return 1
+    return fibonnati(quantidade - 1) + fibonnati(quantidade -2)
 
 while True:
     n = int(input())
