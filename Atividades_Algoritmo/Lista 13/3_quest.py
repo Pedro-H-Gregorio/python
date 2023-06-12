@@ -16,4 +16,3 @@ while len(num) < 100:
         num.append(i)
     i+=1
 print(*num,f'A soma de todos os 100 primos é :{soma(num)}',sep="\n")
-print(len(num))
