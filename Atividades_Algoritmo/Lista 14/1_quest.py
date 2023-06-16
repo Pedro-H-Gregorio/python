@@ -21,7 +21,7 @@ ordens = []
 
 try:
     for i in range(2):
-        ordem = input("Qual a ordem da "+str(len(matrizes)+1)+"° matriz que deseja inserir? ").split("x")
+        ordem = input("Qual a ordem da "+str(len(matrizes)+1)+"° matriz que deseja inserir? (lxc)").split("x")
         ordens.append(ordem)
         matriz = []
         for i in range(int(ordem[0])):

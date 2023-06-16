@@ -44,7 +44,7 @@ def resultadoDeterminante(matrizCompleta, resultados = []):
     return resultados
 
 try:
-    ordem = input("Qual a ordem da matriz que deseja inserir? ").split("x")
+    ordem = input("Qual a ordem da matriz que deseja inserir? (lxc)").split("x")
     matriz = []
     for i in range(int(ordem[0])):
         linha = input("Qual a "+str(i+1)+"° linha? ").split(" ")
