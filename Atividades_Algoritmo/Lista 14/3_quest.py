@@ -20,28 +20,20 @@ def parteMatriz(matrizCompleta):
         matrizes.append(matriz)
     return matrizes
 
-def calculaDeterminantesMatriz(matrizCompleta, valores = []):
-    for m in matrizCompleta:
-        if len(m) == 2:
-             valores.append(determinanteMatriz2(m))
+def calculaDeterminantesMatriz(matrizCompleta):
+    valores = []
+    for m in range(len(matrizCompleta)):
+        if len(matrizCompleta[m]) == 2:
+             valores.append(determinanteMatriz2(matrizCompleta[m]))
              continue
-        if len(m) == 3:
-            calculaDeterminantesMatriz(parteMatriz(m))
-            continue
-        valores = resultadoDeterminante(parteMatriz(m))
-        
+        pivos = calculaPivo(matrizCompleta[m][0])
+        determinantes = calculaDeterminantesMatriz(parteMatriz(matrizCompleta[m]))
+        v = []
+        for i in range(len(pivos)):
+            v.append(pivos[i]*determinantes[i])
+        valores.append(sum(v))
         
     return valores
-
-def resultadoDeterminante(matrizCompleta, resultados = []):
-    for m in matrizCompleta:
-        pivos = calculaPivo(m[0])
-        valoresDeterminantes = calculaDeterminantesMatriz([m])
-        resultado = 0
-        for i in range(1,len(pivos)+1):
-            resultado += pivos[-i]*valoresDeterminantes[-i]
-        resultados.append(resultado)
-    return resultados
 
 try:
     ordem = input("Qual a ordem da matriz que deseja inserir? (lxc)").split("x")
@@ -52,7 +44,7 @@ try:
         matriz.append(mapLista)
     if ordem[1] != ordem[0]:
         raise ValueError()
-    print(resultadoDeterminante([matriz])[-1])
+    print(*calculaDeterminantesMatriz([matriz]))
 
 except:
    print("Não é possivel fazer a determinante")
