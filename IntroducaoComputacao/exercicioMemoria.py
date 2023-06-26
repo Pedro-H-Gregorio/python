@@ -12,3 +12,7 @@ while True:
         case 'jump':
             pc = int(busca[1]) - 1
     pc += 1
+
+a = 0
+while True:
+    a+=1
